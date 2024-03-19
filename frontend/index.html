@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decentralized Complaint Management System</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+
+  .complaint-form, .complaint-dashboard {
+    width: 40%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .complaint-form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+
+  .status {
+    color: #333;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Decentralized Complaint Management System</h1>
+  </header>
+  <div class="container">
+    <div class="complaint-form">
+      <h2>Submit a Complaint</h2>
+      <form id="complaintForm">
+        <textarea id="complaintText" placeholder="Enter your complaint here..." required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <div class="complaint-dashboard" id="complaintDashboard">
+      <h2>Complaint Dashboard</h2>
+      <ul id="complaintList">
+        <!-- Complaints will be dynamically added here -->
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('complaintForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var complaintText = document.getElementById('complaintText').value;
+      if (complaintText.trim() !== '') {
+        addComplaint(complaintText);
+        document.getElementById('complaintText').value = '';
+      }
+    });
+
+    function addComplaint(text) {
+      var complaintList = document.getElementById('complaintList');
+      var newComplaint = document.createElement('li');
+      newComplaint.textContent = text;
+      complaintList.appendChild(newComplaint);
+    }
+  </script>
+</body>
+</html>
